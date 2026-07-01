@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:5000");
+const socket = io("https://dating-pro-backend.onrender.com");
 
 const defaultAvatar = (name) =>
   `https://ui-avatars.com/api/?name=${encodeURIComponent(name || "User")}&background=ec4899&color=fff&size=100&bold=true`;
@@ -20,7 +20,7 @@ export default function Chat() {
   useEffect(() => {
     const fetchMe = async () => {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/auth/me", {
+      const res = await fetch("https://dating-pro-backend.onrender.com/api/auth/me", {
         headers: { Authorization: token },
       });
       const data = await res.json();
@@ -35,7 +35,7 @@ export default function Chat() {
       setMatchesLoading(true);
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch("http://localhost:5000/api/auth/matches", {
+        const res = await fetch("https://dating-pro-backend.onrender.com/api/auth/matches", {
           headers: { Authorization: token },
         });
         const data = await res.json();
@@ -52,7 +52,7 @@ export default function Chat() {
   const fetchUnreadCounts = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/messages/unread/counts", {
+      const res = await fetch("https://dating-pro-backend.onrender.com/api/messages/unread/counts", {
         headers: { Authorization: token },
       });
       const data = await res.json();
@@ -69,13 +69,13 @@ export default function Chat() {
     const fetchMessages = async () => {
       const token = localStorage.getItem("token");
       const res = await fetch(
-        `http://localhost:5000/api/messages/${selectedUser._id}`,
+        `https://dating-pro-backend.onrender.com/api/messages/${selectedUser._id}`,
         { headers: { Authorization: token } }
       );
       const data = await res.json();
       setMessages(data);
 
-      await fetch(`http://localhost:5000/api/messages/read/${selectedUser._id}`, {
+      await fetch(`https://dating-pro-backend.onrender.com/api/messages/read/${selectedUser._id}`, {
         method: "PUT",
         headers: { Authorization: token },
       });
@@ -110,7 +110,7 @@ export default function Chat() {
       receiverId: selectedUser._id,
       text: input,
     };
-    await fetch("http://localhost:5000/api/messages/send", {
+    await fetch("https://dating-pro-backend.onrender.com/api/messages/send", {
       method: "POST",
       headers: { "Content-Type": "application/json", Authorization: token },
       body: JSON.stringify({ receiverId: selectedUser._id, text: input }),
