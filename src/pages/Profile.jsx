@@ -17,7 +17,7 @@ export default function Profile() {
     const fetchUser = async () => {
       const token = localStorage.getItem("token");
       try {
-        const res = await fetch("http://localhost:5000/api/auth/me", {
+        const res = await fetch("https://dating-pro-backend.onrender.com/api/auth/me", {
           headers: { Authorization: token },
         });
         const data = await res.json();
@@ -52,7 +52,7 @@ export default function Profile() {
     setSaving(true);
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch("http://localhost:5000/api/auth/profile", {
+      const res = await fetch("https://dating-pro-backend.onrender.com/api/auth/profile", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
