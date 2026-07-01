@@ -23,7 +23,7 @@ export default function Discover() {
   useEffect(() => {
     const fetchMe = async () => {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/auth/me", {
+      const res = await fetch("https://dating-pro-backend.onrender.com/api/auth/me", {
         headers: { Authorization: token },
       });
       const data = await res.json();
@@ -36,7 +36,7 @@ export default function Discover() {
     const fetchProfiles = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch("http://localhost:5000/api/auth/users", {
+        const res = await fetch("https://dating-pro-backend.onrender.com/api/auth/users", {
           headers: { Authorization: token },
         });
         const data = await res.json();
@@ -100,7 +100,7 @@ export default function Discover() {
     setLiking(true);
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/auth/like", {
+      const res = await fetch("https://dating-pro-backend.onrender.com/api/auth/like", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
