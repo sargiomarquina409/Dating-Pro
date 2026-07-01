@@ -12,7 +12,7 @@ export default function Register() {
     setLoading(true); // ← NEW
     try {
       // Step 1: Register
-      const res = await fetch("http://localhost:5000/api/auth/register", {
+      const res = await fetch("http://https://dating-pro-backend.onrender.com/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),
@@ -27,7 +27,7 @@ export default function Register() {
       }
 
       // Step 2: Auto login after register ← NEW
-      const loginRes = await fetch("http://localhost:5000/api/auth/login", {
+      const loginRes = await fetch("https://dating-pro-backend.onrender.com/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
